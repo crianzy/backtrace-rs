@@ -195,7 +195,8 @@ impl fmt::Debug for Backtrace {
         try!(write!(fmt, "stack backtrace:"));
 
         for (idx, frame) in self.frames().iter().enumerate() {
-            let ip = frame.ip();
+//            let ip = frame.ip();
+            let ip = frame.symbol_address();
             try!(write!(fmt, "\n{:4}: {:2$?}", idx, ip, hex_width));
 
             let symbols = match frame.symbols {
